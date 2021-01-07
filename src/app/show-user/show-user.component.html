@@ -1,6 +1,5 @@
-<div *ngIf="user">
-    {{myDebuggerMethod(user)}}
-    isActive: <input type="checkbox" [value]="user.isActive">
+<div *ngIf="user" class="row">
+    isActive: <input type="checkbox" [checked]="user.isActive">
     firstName:<b>{{user.firstName}}</b>
     lastName:<b>{{user.lastName}}</b>
     userId: <b>{{user.userId | myToUpper}}</b>

@@ -1,12 +1,13 @@
-<h1 [innerText]="title"></h1>
-
-<div (keyup)="0">
-    firstName: <input #firstName>
-    lastName: <input #lastName>
-    userId: <input #userId>
-    <input type="button" value="Add User" (click)="addUser($event, firstName.value, lastName.value, userId.value)">
+<div class="container">
+    <div class="row">
+        <a routerLink="/adduser">Add User</a>
+    </div>
+    <div class="row">
+        <app-add-user></app-add-user>
+    </div>
+    <div class="container">
+        <ng-container *ngFor="let user of users">
+            <app-show-user [user]="user"></app-show-user>
+        </ng-container>
+    </div>
 </div>
-
-<ng-container *ngFor="let user of users">
-    <app-show-user [user]="user"></app-show-user>
-</ng-container>

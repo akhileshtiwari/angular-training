@@ -7,6 +7,12 @@ import { MyFirstComponent } from './my-first.component';
 import { MySecondComponent } from './my-second/my-second.component';
 import { MyToUpperPipe } from './my-to-upper.pipe';
 import { ShowUserComponent } from './show-user/show-user.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BetterLoggerService, LoggerService, MyLoggerService } from './logger.service';
+import { UserService } from './user.service';
+
+let counter = 1;
 
 @NgModule({
   declarations: [
@@ -14,13 +20,26 @@ import { ShowUserComponent } from './show-user/show-user.component';
     MyFirstComponent,
     MySecondComponent,
     MyToUpperPipe,
-    ShowUserComponent
+    ShowUserComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [{
+    provide: LoggerService,
+    // useClass: BetterLoggerService
+    useFactory: ()=>{
+      if(counter % 2){
+        return new BetterLoggerService();
+      }else{
+        return new MyLoggerService();
+      }
+      counter++;
+    }
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

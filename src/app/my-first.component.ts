@@ -1,41 +1,37 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { AddUserComponent } from './add-user/add-user.component';
+import { LoggerService, MyLoggerService } from './logger.service';
 import { User } from './user.model';
+import { UserService } from './user.service';
 
 @Component({
     selector: 'app-my-first',
     templateUrl: './my-first.component.html',
-    styleUrls: ['./my-first.component.less']
+    styleUrls: ['./my-first.component.less'],
+    providers: [
+        {
+            provide: LoggerService,
+            useClass: MyLoggerService
+        }
+    ]
 })
-export class MyFirstComponent {
+export class MyFirstComponent implements AfterViewInit {
 
     title = "Users Component";
-    users: Array<User>;
-    constructor() {
-        this.users =
-            [{
-                firstName: 'Akhilesh',
-                lastName: 'Tiwari',
-                userId: 'aktiwari'
-            },
-            {
-                firstName: 'Dylan',
-                lastName: 'T',
-                userId: 'dt'
-            },
-            {
-                firstName: 'Sachin',
-                lastName: 'Tendulkar',
-                userId: null
-            }
-            ]
+
+
+    public get users(): Array<User> {
+        this.logger.log('users accessed');
+        return this.userService.getUsers();
     }
 
-    addUser(e, firsName, lastName, userId){
-        console.log("event",e);
-        this.users.push({
-            firstName: firsName,
-            lastName: lastName,
-            userId: userId
-        });
+    constructor(private userService: UserService, private logger: LoggerService) {
+
+    }
+    ngAfterViewInit(): void {
+    }
+
+    userAddedHandler(user: User) {
+        this.users.push(user);
     }
 }

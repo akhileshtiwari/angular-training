@@ -17,7 +17,7 @@ export class ShowUserComponent implements OnInit {
   }
 
   myDebuggerMethod(user){
-    console.log(user);
+    
   }
 
 }
