@@ -1,10 +1,4 @@
 <div class="container">
-    <div class="row">
-        <a routerLink="/adduser">Add User</a>
-    </div>
-    <div class="row">
-        <app-add-user></app-add-user>
-    </div>
     <div class="container">
         <ng-container *ngFor="let user of users">
             <app-show-user [user]="user"></app-show-user>

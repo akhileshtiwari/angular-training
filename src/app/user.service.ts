@@ -7,7 +7,11 @@ import { User } from './user.model';
 })
 export class UserService {
 
-    private users: Array<User> = [];
+    private users: Array<User> = [{
+        firstName: "Rohit",
+        lastName: 'Sharma',
+        userId: 'rohit'
+    }];
 
     constructor(private logger: LoggerService){
 

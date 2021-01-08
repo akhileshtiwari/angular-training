@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="row">
+        firstName: <input #firstName type="text" [(ngModel)]="userToBeSaved.firstName">
+        lastName: <input #lastName type="text" [(ngModel)]="userToBeSaved.lastName">
+        userId: <label #userId>{{userToBeSaved.userId}}</label>
+        <input type="button" value="Save User" (click)="saveUser()">
+    </div>
+</div>

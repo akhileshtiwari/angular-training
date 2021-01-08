@@ -8,16 +8,27 @@ import { User } from '../user.model';
 })
 export class ShowUserComponent implements OnInit {
 
+  isEditing = false;
   @Input() user: User;
+  userToBeSaved : User;
 
   console=console;
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
   myDebuggerMethod(user){
     
+  }
+
+  editUser(){
+    this.isEditing = true;
+  }
+
+  userSaved(){
+    this.isEditing = false;
   }
 
 }

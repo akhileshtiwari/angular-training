@@ -11,6 +11,11 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BetterLoggerService, LoggerService, MyLoggerService } from './logger.service';
 import { UserService } from './user.service';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LoginComponent } from './login/login.component';
 
 let counter = 1;
 
@@ -21,20 +26,24 @@ let counter = 1;
     MySecondComponent,
     MyToUpperPipe,
     ShowUserComponent,
-    AddUserComponent
+    AddUserComponent,
+    EditUserComponent,
+    PageNotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [{
     provide: LoggerService,
     // useClass: BetterLoggerService
-    useFactory: ()=>{
-      if(counter % 2){
+    useFactory: () => {
+      if (counter % 2) {
         return new BetterLoggerService();
-      }else{
+      } else {
         return new MyLoggerService();
       }
       counter++;

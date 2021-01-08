@@ -1,6 +1,23 @@
 <div class="container">
-  <div class="row">
+  <div class="nav nav-bar">
     <h1>My Training App</h1>
+    <ul class="nav">
+      <li class="nav-item">
+        <a routerLink="/home">Home</a>        
+      </li>
+      <li class="nav-item">
+        <a routerLink="/adduser">Add User</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/help">Help</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a (click)="logout()">Log Out</a>
+      </li>
+    </ul>
   </div>
   <div class="row">
     <router-outlet></router-outlet>
