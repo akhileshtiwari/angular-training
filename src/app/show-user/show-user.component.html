@@ -4,7 +4,7 @@
     lastName:<b>{{user.lastName}}</b>
     userId: <b>{{user.userId | myToUpper}}</b>
     <!-- <input type="button" value="Edit" (click)="editUser()"> -->
-    <a [routerLink]="['/edituser',user.userId]">Edit User</a>
+    <a [routerLink]="['/edituser',user.id]">Edit User</a>
 </div>
 <div *ngIf="isEditing" class="row">
     <app-edit-user [user]="user" (saved)="userSaved()" ></app-edit-user>

@@ -1,4 +1,7 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { of, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { AddUserComponent } from './add-user/add-user.component';
 import { LoggerService, MyLoggerService } from './logger.service';
 import { User } from './user.model';
@@ -15,18 +18,21 @@ import { UserService } from './user.service';
         }
     ]
 })
-export class MyFirstComponent implements AfterViewInit {
+export class MyFirstComponent implements AfterViewInit, OnInit {
 
     title = "Users Component";
 
+    users: Array<User>;
 
-    public get users(): Array<User> {
-        this.logger.log('users accessed');
-        return this.userService.getUsers();
+    constructor(
+        private userService: UserService,
+        private logger: LoggerService) {
+
     }
-
-    constructor(private userService: UserService, private logger: LoggerService) {
-
+    ngOnInit(): void {
+        this.userService.getUsers().subscribe(users => {
+            this.users = users;
+        })
     }
     ngAfterViewInit(): void {
     }
