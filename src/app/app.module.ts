@@ -12,11 +12,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BetterLoggerService, LoggerService, MyLoggerService } from './logger.service';
 import { UserService } from './user.service';
 import { EditUserComponent } from './edit-user/edit-user.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditUserReactiveComponent } from './edit-user-reactive/edit-user-reactive.component';
 
 let counter = 1;
 
@@ -30,14 +31,16 @@ let counter = 1;
     AddUserComponent,
     EditUserComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    EditUserReactiveComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [{
     provide: LoggerService,

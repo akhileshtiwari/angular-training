@@ -1,0 +1,20 @@
+<div class="container">
+    <form [formGroup]="userForm" class="row" >
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input name="firstName" class="form-control" type="text" formControlName="firstName" minlength="3" maxlength="12" required>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input name="lastName" class="form-control" type="text" formControlName="lastName" required>
+        </div>
+
+        <!-- <div class="form-group">
+            <label for="userId">User Id</label>
+            <label name="userId" class="form-control" formControlName="id"></label>
+        </div> -->
+        <input type="button" value="Save User" [disabled]="!userForm.valid" (click)="saveUser()">
+        
+    </form>
+</div>

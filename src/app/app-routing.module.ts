@@ -6,6 +6,7 @@ import { MyFirstComponent } from './my-first.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './gaurds/auth.guard';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditUserReactiveComponent } from './edit-user-reactive/edit-user-reactive.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'edituser/:userId',
     component: EditUserComponent,
+    canActivate: [AuthGuard]
+  },{
+    path: 'editreactuser/:userId',
+    component: EditUserReactiveComponent,
     canActivate: [AuthGuard]
   }, {
     path: 'login',

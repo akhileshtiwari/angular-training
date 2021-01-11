@@ -20,6 +20,7 @@ export abstract class Base {
 })
 export class EditUserComponent extends Base implements OnInit, OnDestroy {
   userToBeSaved: User;
+  console = console;
 
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {
@@ -35,27 +36,12 @@ export class EditUserComponent extends Base implements OnInit, OnDestroy {
   ngOnInit(): void {
     const userId = this.route.snapshot.paramMap.get('userId');
     this.subs.push(
-      
-      this.userService.getUser(userId).pipe(
 
-    )
-    .subscribe(res => {
-      this.userToBeSaved = res;
-
-    }).unsubscribe()
+      this.userService.getUser(userId)
+        .subscribe(res => {
+          this.userToBeSaved = res;
+        })
     );
-
-    // let index = this.userService.getUsers().findIndex(u => u.userId == userId);
-    // this.userToBeSaved = this.userService.getUsers()[index];
-    // console.log("edit user", this.user);
-    // this.userToBeSaved = JSON.parse(JSON.stringify(this.user));
-    // this.userToBeSaved = { ...this.user };
-    // Object.assign(this.userToBeSaved,this.user);
-    // this.userToBeSaved = {
-    //   firstName: this.user.firstName,
-    //   lastName: this.user.lastName,
-    //   userId: this.user.userId
-    // }
   }
 
   saveUser() {
